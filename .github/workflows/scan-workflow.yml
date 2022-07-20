@@ -8,9 +8,6 @@ jobs:
     name: gitleaks
     runs-on: ubuntu-latest
     steps:
-      - uses: lucaskenda/gha-rehusable-workflows/.github/workflows/check-tamper.yml@master
-        with:
-          text: Hello world!!
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
