@@ -31,27 +31,39 @@ jobs:
       - uses: nick-fields/persist-action-data@v1
         with:
           retrieve_variables: LANG
-      - run: echo $LANG
-      - run: echo "job1 - step1"
-      - run: echo "job1 - step2"
+      - run: echo "job1 - nodejs"
+        if: $LANG == 'nodejs' 
+      - run: echo "job1 - java"
+        if: $LANG == 'java' 
+      - run: echo "job1 - go"
+        if: $LANG == 'go'
+
   job2:
     name: job2
     needs: [job1]
     runs-on: ubuntu-latest
     steps:
-      - run: echo "job2 - step1"
-      - run: echo "job2 - step2"
+      - uses: nick-fields/persist-action-data@v1
+        with:
+          retrieve_variables: LANG
+      - run: echo "job2 - nodejs"
+        if: $LANG == 'nodejs' 
+      - run: echo "job2 - java"
+        if: $LANG == 'java' 
+      - run: echo "job2 - go"
+        if: $LANG == 'go'
+
   job3:
     name: job3
     needs: [job2]
     runs-on: ubuntu-latest
     steps:
-      - run: echo "job3 - step1"
-      - run: echo "job3 - step2"
-  job4:
-    name: job4
-    needs: [job3]
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "job4 - step1"
-      - run: echo "job4 - step2"
+      - uses: nick-fields/persist-action-data@v1
+        with:
+          retrieve_variables: LANG
+      - run: echo "job3 - nodejs"
+        if: $LANG == 'nodejs' 
+      - run: echo "job3 - java"
+        if: $LANG == 'java' 
+      - run: echo "job3 - go"
+        if: $LANG == 'go'
