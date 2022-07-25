@@ -8,6 +8,23 @@ on:
         type: string
 
 jobs:
+  getEnvs:
+    name: Get variables from repo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Run read-yaml action
+        id: yaml-data
+        uses: KJ002/read-yaml@main
+        with:
+          file: 'variables.yml'
+          key-path: '["lang"]'
+
+      - name: Display read-yaml output
+        run: echo "${{ steps.yaml-data.outputs.data }}"  
+
   job1:
     name: job1
     runs-on: ubuntu-latest
