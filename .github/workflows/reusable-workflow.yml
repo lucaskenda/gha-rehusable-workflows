@@ -7,9 +7,6 @@ on:
         required: true
         type: string
 
-env:
-  LANG: none
-
 jobs:
   getEnvs:
     name: Get variables from repo
@@ -21,13 +18,20 @@ jobs:
         uses: mikefarah/yq@v4.26.1
       - id: vars
         run: echo ::set-output name=lang::$(yq '.lang' $GITHUB_WORKSPACE/variables.yml)
-      - run: echo ${{ steps.vars.outputs.lang }}
+      - uses: nick-fields/persist-action-data@v1
+        with:
+          data: ${{ steps.vars.outputs.lang }}
+          variable: LANG
       
   job1:
     name: job1
     needs: [getEnvs]
     runs-on: ubuntu-latest
     steps:
+      - uses: nick-fields/persist-action-data@v1
+        with:
+          retrieve_variables: LANG
+      - run: echo $LANG
       - run: echo "job1 - step1"
       - run: echo "job1 - step2"
   job2:
