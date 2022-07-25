@@ -27,6 +27,7 @@ jobs:
 
   job1:
     name: job1
+    needs: [getEnvs]
     runs-on: ubuntu-latest
     steps:
       - run: echo "job1 - step1"
