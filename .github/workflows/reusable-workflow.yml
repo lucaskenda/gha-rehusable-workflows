@@ -17,7 +17,7 @@ jobs:
       - name: Read yaml
         uses: mikefarah/yq@v4.26.1
       - id: yq
-        run: yq '.lang' $GITHUB_WORKSPACE/variables.yaml 
+        run: yq '.lang' $GITHUB_WORKSPACE/variables.yml 
       - name: Display read-yaml output
         run: echo "${{ steps.yq.outputs }}"  
 
