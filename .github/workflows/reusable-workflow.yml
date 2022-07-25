@@ -8,8 +8,27 @@ on:
         type: string
 
 jobs:
-  example_job:
-    name: Pass input and secrets to my-action
+  job1:
+    name: job1
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 ${{ inputs.text }}"
+      - run: echo "job1 - step1"
+      - run: echo "job1 - step2"
+  job2:
+    name: job2
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "job2 - step1"
+      - run: echo "job2 - step2"
+  job3:
+    name: job3
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "job3 - step1"
+      - run: echo "job3 - step2"
+  job4:
+    name: job4
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "job4 - step1"
+      - run: echo "job4 - step2"
