@@ -32,11 +32,11 @@ jobs:
         with:
           retrieve_variables: LANG
       - run: echo "job1 - nodejs"
-        if: ${LANG} == 'nodejs' 
+        if: env.LANG == 'nodejs' 
       - run: echo "job1 - java"
-        if: ${LANG} == 'java' 
+        if: env.LANG == 'java' 
       - run: echo "job1 - go"
-        if: ${LANG} == 'go'
+        if: env.LANG == 'go'
 
   job2:
     name: job2
@@ -47,11 +47,11 @@ jobs:
         with:
           retrieve_variables: LANG
       - run: echo "job2 - nodejs"
-        if: ${LANG} == 'nodejs' 
+        if: env.LANG == 'nodejs' 
       - run: echo "job2 - java"
-        if: ${LANG} == 'java' 
+        if: env.LANG == 'java' 
       - run: echo "job2 - go"
-        if: ${LANG} == 'go'
+        if: env.LANG == 'go'
 
   job3:
     name: job3
@@ -62,8 +62,8 @@ jobs:
         with:
           retrieve_variables: LANG
       - run: echo "job3 - nodejs"
-        if: ${LANG} == 'nodejs' 
+        if: env.LANG == 'nodejs' 
       - run: echo "job3 - java"
-        if: ${LANG} == 'java' 
+        if: env.LANG == 'java' 
       - run: echo "job3 - go"
-        if: ${LANG} == 'go'
+        if: env.LANG == 'go'
