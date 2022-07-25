@@ -7,6 +7,9 @@ on:
         required: true
         type: string
 
+env:
+  LANG: none
+
 jobs:
   getEnvs:
     name: Get variables from repo
@@ -16,11 +19,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Read yaml
         uses: mikefarah/yq@v4.26.1
-      - id: yq
-        run: yq '.lang' $GITHUB_WORKSPACE/variables.yml 
-      - name: Display read-yaml output
-        run: echo "${{ steps.yq.outputs }}"  
-
+      - id: vars
+        run: echo ::set-output name=lang::$(yq '.lang' $GITHUB_WORKSPACE/variables.yml)
+      - run: echo ${{ steps.vars.outputs.lang }}
+      
   job1:
     name: job1
     needs: [getEnvs]
