@@ -31,12 +31,10 @@ jobs:
       - uses: nick-fields/persist-action-data@v1
         with:
           retrieve_variables: LANG
-      - run: echo "job1 - nodejs"
-        if: env.LANG == 'nodejs' 
-      - run: echo "job1 - java"
-        if: env.LANG == 'java' 
-      - run: echo "job1 - go"
-        if: env.LANG == 'go'
+      - id: foo
+        uses: ./job1.yml@master
+        with:
+          lang: env.LANG
 
   job2:
     name: job2
