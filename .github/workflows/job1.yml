@@ -1,0 +1,16 @@
+name: 'Job1'
+description: 'Job1'
+inputs:
+  lang:
+    description: 'Language'
+    required: true
+    default: 'java'
+runs:
+  using: "composite"
+  steps:
+    - run: echo "job1 - nodejs"
+      if: inputs.lang == 'nodejs' 
+    - run: echo "job1 - java"
+      if: inputs.lang == 'java' 
+    - run: echo "job1 - go"
+      if: inputs.lang == 'go'
