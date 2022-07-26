@@ -32,7 +32,7 @@ jobs:
         with:
           retrieve_variables: LANG
       - id: foo
-        uses: ./job1.yml@master
+        uses: lucaskenda/gha-rehusable-workflows/.github/workflows/job1.yml@master
         with:
           lang: env.LANG
 
